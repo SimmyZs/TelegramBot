@@ -22,7 +22,6 @@ public class ThreadInv extends Thread {
     public ThreadInv(CCondivisa c) {
         api = new TelegramAPI();
         condivisa = c;
-        coords=new XMLCoordinate();
     }
 
     @Override
@@ -39,24 +38,18 @@ public class ThreadInv extends Thread {
                 String testo = "";
                 String messaggio = mess.getText();
 
-                //controllo
                 if (!messaggio.equals("")) {
                     if (messaggio.startsWith("/")) {
-                        if (messaggio.toUpperCase().startsWith("/CITTA ")) {
+                        if (messaggio.toUpperCase().startsWith("/citta ")) {
                             String query = messaggio.substring(7);
                             }else{
-                                testo="posizione non trovata";
+                                testo="boh";
                             }
                         } else {
-                            testo = "comando non valido";
-                        }
-                    } else {
-                        if (messaggio.equalsIgnoreCase("bosnia")) {
-                            testo = "BOSNIA!";
+                            testo = "this comand doesn't exist";
                         }
                     }
 
-                    //invio
                     if (!testo.equals("")) {
                         try {
                             api.sendMessage(testo, mess.getChatID());

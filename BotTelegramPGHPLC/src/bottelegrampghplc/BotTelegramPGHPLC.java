@@ -17,9 +17,9 @@ public class BotTelegramPGHPLC {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CCondivisa c =  new Condivisa();
-        ThreadInvio ti = new ThreadInvio(c);
-        ThreadRicezione tr = new ThreadRicezione(c);
+        CCondivisa c =  new CCondivisa();
+        ThreadInv ti = new ThreadInv(c);
+        ThreadRic tr = new ThreadRic(c);
         
         tr.start();
         ti.start();
@@ -28,13 +28,13 @@ public class BotTelegramPGHPLC {
         try {
             tr.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(BosnianBot.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BotTelegramPGHPLC.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try {
             ti.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(BosnianBot.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BotTelegramPGHPLC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
